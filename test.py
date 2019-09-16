@@ -10,7 +10,7 @@ import argparse
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--toy', action='store_true', 
+    parser.add_argument('--toy', action='store_true',
             help='If set, use small data; used for fast debugging.')
     parser.add_argument('--ca', action='store_true',
             help='Use conditional attention.')
@@ -18,7 +18,7 @@ if __name__ == '__main__':
             help='0: original dataset, 1: re-split dataset')
     parser.add_argument('--rl', action='store_true',
             help='Use RL for Seq2SQL.')
-    parser.add_argument('--baseline', action='store_true', 
+    parser.add_argument('--baseline', action='store_true',
             help='If set, then test Seq2SQL model; default is SQLNet model.')
     parser.add_argument('--train_emb', action='store_true',
             help='Use trained word embedding for SQLNet.')
@@ -28,11 +28,11 @@ if __name__ == '__main__':
     B_word=42
     if args.toy:
         USE_SMALL=True
-        GPU=True
+        GPU=False
         BATCH_SIZE=15
     else:
         USE_SMALL=False
-        GPU=True
+        GPU=False
         BATCH_SIZE=64
     TEST_ENTRY=(True, True, True)  # (AGG, SEL, COND)
 

@@ -10,7 +10,7 @@ import argparse
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--toy', action='store_true', 
+    parser.add_argument('--toy', action='store_true',
             help='If set, use small data; used for fast debugging.')
     parser.add_argument('--suffix', type=str, default='',
             help='The suffix at the end of saved model name.')
@@ -20,7 +20,7 @@ if __name__ == '__main__':
             help='0: original dataset, 1: re-split dataset')
     parser.add_argument('--rl', action='store_true',
             help='Use RL for Seq2SQL(requires pretrained model).')
-    parser.add_argument('--baseline', action='store_true', 
+    parser.add_argument('--baseline', action='store_true',
             help='If set, then train Seq2SQL model; default is SQLNet model.')
     parser.add_argument('--train_emb', action='store_true',
             help='Train word embedding for SQLNet(requires pretrained model).')
@@ -123,9 +123,9 @@ if __name__ == '__main__':
                 torch.save(model.cond_embed_layer.state_dict(), cond_e)
         for i in range(100):
             print 'Epoch %d @ %s'%(i+1, datetime.datetime.now())
-            print ' Loss = %s'%epoch_train(
-                    model, optimizer, BATCH_SIZE, 
-                    sql_data, table_data, TRAIN_ENTRY)
+        #     print ' Loss = %s'%epoch_train(
+        #             model, optimizer, BATCH_SIZE,
+        #             sql_data, table_data, TRAIN_ENTRY)
             print ' Train acc_qm: %s\n   breakdown result: %s'%epoch_acc(
                     model, BATCH_SIZE, sql_data, table_data, TRAIN_ENTRY)
             #val_acc = epoch_token_acc(model, BATCH_SIZE, val_sql_data, val_table_data, TRAIN_ENTRY)
