@@ -106,7 +106,7 @@ def to_batch_seq(sql_data, table_data, idxes, st, ed, ret_vis_data=False):
         col_seq.append(table_data[sql['table_id']]['header_tok'])
         col_num.append(len(table_data[sql['table_id']]['header']))
         ans_seq.append((sql['sql']['agg'],
-            sql['sql']['sel'], 
+            sql['sql']['sel'],
             len(sql['sql']['conds']),
             tuple(x[0] for x in sql['sql']['conds']),
             tuple(x[1] for x in sql['sql']['conds'])))
@@ -183,7 +183,7 @@ def epoch_exec_acc(model, batch_size, sql_data, table_data, db_path):
             except:
                 ret_pred = None
             tot_acc_num += (ret_gt == ret_pred)
-        
+
         st = ed
 
     return tot_acc_num / len(sql_data)
@@ -206,6 +206,7 @@ def epoch_acc(model, batch_size, sql_data, table_data, pred_entry):
                 pred_entry, gt_sel = gt_sel_seq)
         pred_queries = model.gen_query(score, q_seq, col_seq,
                 raw_q_seq, raw_col_seq, pred_entry)
+        # print("Pred query is %s"%pred_queries)
         one_err, tot_err = model.check_acc(raw_data,
                 pred_queries, query_gt, pred_entry)
 

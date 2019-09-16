@@ -62,7 +62,7 @@ class Seq2SQL(nn.Module):
         self.CE = nn.CrossEntropyLoss()
         self.softmax = nn.Softmax()
         self.log_softmax = nn.LogSoftmax()
-        self.bce_logit = nn.BCEWithLogitsLoss()
+        # self.bce_logit = nn.BCEWithLogitsLoss()
         if gpu:
             self.cuda()
 

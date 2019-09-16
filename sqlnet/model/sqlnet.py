@@ -38,7 +38,7 @@ class SQLNet(nn.Module):
         else:
             self.embed_layer = WordEmbedding(word_emb, N_word, gpu,
                     self.SQL_TOK, our_model=True, trainable=trainable_emb)
-        
+
         #Predict aggregator
         self.agg_pred = AggPredictor(N_word, N_h, N_depth, use_ca=use_ca)
 
@@ -54,7 +54,7 @@ class SQLNet(nn.Module):
         self.CE = nn.CrossEntropyLoss()
         self.softmax = nn.Softmax()
         self.log_softmax = nn.LogSoftmax()
-        self.bce_logit = nn.BCEWithLogitsLoss()
+        # self.bce_logit = nn.BCEWithLogitsLoss()
         if gpu:
             self.cuda()
 
